@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://pvsts.github.io</id>
+    <title>CF</title>
+    <updated>2024-05-24T11:20:18.503Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://pvsts.github.io"/>
+    <link rel="self" href="https://pvsts.github.io/atom.xml"/>
+    <logo>https://pvsts.github.io/images/avatar.png</logo>
+    <icon>https://pvsts.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, CF</rights>
+    <entry>
+        <title type="html"><![CDATA[四阶魔方图纸]]></title>
+        <id>https://pvsts.github.io/post/N_sak3BLH/</id>
+        <link href="https://pvsts.github.io/post/N_sak3BLH/">
+        </link>
+        <updated>2024-05-24T10:59:03.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2阶魔方教程图]]></title>
+        <id>https://pvsts.github.io/post/XNdHxL2Ev/</id>
+        <link href="https://pvsts.github.io/post/XNdHxL2Ev/">
+        </link>
+        <updated>2024-05-24T10:44:11.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[5阶魔方特殊公式]]></title>
+        <id>https://pvsts.github.io/post/nXV_0rTTo/</id>
+        <link href="https://pvsts.github.io/post/nXV_0rTTo/">
+        </link>
+        <updated>2024-05-24T09:53:04.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[alist]]></title>
+        <id>https://pvsts.github.io/post/nVeC_bNn1/</id>
+        <link href="https://pvsts.github.io/post/nVeC_bNn1/">
+        </link>
+        <updated>2023-11-22T13:53:46.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[快速跳转新链接导致无法直接复制正在跳转的链接]]></title>
+        <id>https://pvsts.github.io/post/ctmg4JRNp/</id>
+        <link href="https://pvsts.github.io/post/ctmg4JRNp/">
+        </link>
+        <updated>2023-11-17T16:56:41.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[openwrt如何将wan口改成lan口使用]]></title>
+        <id>https://pvsts.github.io/post/To50SYnbG/</id>
+        <link href="https://pvsts.github.io/post/To50SYnbG/">
+        </link>
+        <updated>2023-10-31T04:06:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[chrome实现多开登录多个账号及备份数据]]></title>
+        <id>https://pvsts.github.io/post/09bq6R2h4/</id>
+        <link href="https://pvsts.github.io/post/09bq6R2h4/">
+        </link>
+        <updated>2023-10-17T14:54:33.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[U盘重装美宜佳系统]]></title>
+        <id>https://pvsts.github.io/post/tmNGnWk1A/</id>
+        <link href="https://pvsts.github.io/post/tmNGnWk1A/">
+        </link>
+        <updated>2023-10-14T04:00:20.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[更换钱箱锁头]]></title>
+        <id>https://pvsts.github.io/post/0tGtpzpej/</id>
+        <link href="https://pvsts.github.io/post/0tGtpzpej/">
+        </link>
+        <updated>2023-10-14T03:14:12.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[数字小键盘自定义]]></title>
+        <id>https://pvsts.github.io/post/Wimu60UKO/</id>
+        <link href="https://pvsts.github.io/post/Wimu60UKO/">
+        </link>
+        <updated>2023-08-28T15:21:20.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[随身wifi刷openwrt 遇到的一些问题]]></title>
+        <id>https://pvsts.github.io/post/ZNgSPORW_/</id>
+        <link href="https://pvsts.github.io/post/ZNgSPORW_/">
+        </link>
+        <updated>2023-08-14T08:15:28.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何打开IE内核网站四种方法]]></title>
+        <id>https://pvsts.github.io/post/jQb_Z2RuR/</id>
+        <link href="https://pvsts.github.io/post/jQb_Z2RuR/">
+        </link>
+        <updated>2023-08-12T04:07:33.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[h5ai搭建和配置（宝塔）（phpstudy）]]></title>
+        <id>https://pvsts.github.io/post/Z-fknf40Z/</id>
+        <link href="https://pvsts.github.io/post/Z-fknf40Z/">
+        </link>
+        <updated>2023-08-03T18:04:08.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[filebrowser【Windows】安装和配置]]></title>
+        <id>https://pvsts.github.io/post/6Yu7YbRIU/</id>
+        <link href="https://pvsts.github.io/post/6Yu7YbRIU/">
+        </link>
+        <updated>2023-08-03T17:50:26.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[美宜佳]]></title>
+        <id>https://pvsts.github.io/post/WdYT5Q-9V/</id>
+        <link href="https://pvsts.github.io/post/WdYT5Q-9V/">
+        </link>
+        <updated>2023-07-31T09:38:50.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ubuntu出现(initramfs)修复操作]]></title>
+        <id>https://pvsts.github.io/post/UwjkuPJjo/</id>
+        <link href="https://pvsts.github.io/post/UwjkuPJjo/">
+        </link>
+        <updated>2023-07-16T03:02:05.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[管理“此电脑”里删不掉的流氓“快捷方式”]]></title>
+        <id>https://pvsts.github.io/post/HakO4cDwu/</id>
+        <link href="https://pvsts.github.io/post/HakO4cDwu/">
+        </link>
+        <updated>2023-07-15T01:05:21.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[学习通网盘提取在线播放]]></title>
+        <id>https://pvsts.github.io/post/pyeLZW1dv/</id>
+        <link href="https://pvsts.github.io/post/pyeLZW1dv/">
+        </link>
+        <updated>2023-07-01T04:19:45.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[美宜佳常用网站]]></title>
+        <id>https://pvsts.github.io/post/dekhWCKKC/</id>
+        <link href="https://pvsts.github.io/post/dekhWCKKC/">
+        </link>
+        <updated>2023-07-01T03:50:26.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[路由器固件]]></title>
+        <id>https://pvsts.github.io/post/Rgh9Pp23Y/</id>
+        <link href="https://pvsts.github.io/post/Rgh9Pp23Y/">
+        </link>
+        <updated>2023-06-28T16:24:30.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[光猫改桥接模式]]></title>
+        <id>https://pvsts.github.io/post/wVh5HG-5V/</id>
+        <link href="https://pvsts.github.io/post/wVh5HG-5V/">
+        </link>
+        <updated>2023-06-24T12:51:28.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[随身wifi刷机成为linux或者openwrt usb上网配置]]></title>
+        <id>https://pvsts.github.io/post/qRkQmZp4X/</id>
+        <link href="https://pvsts.github.io/post/qRkQmZp4X/">
+        </link>
+        <updated>2023-06-23T15:06:23.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[随身wifi高通410改串]]></title>
+        <id>https://pvsts.github.io/post/V-46T2ncw/</id>
+        <link href="https://pvsts.github.io/post/V-46T2ncw/">
+        </link>
+        <updated>2023-06-23T14:51:26.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[给网页添加歌单]]></title>
+        <id>https://pvsts.github.io/post/cZZ_MQ2se/</id>
+        <link href="https://pvsts.github.io/post/cZZ_MQ2se/">
+        </link>
+        <updated>2023-06-16T07:39:34.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[无损音乐下载网站]]></title>
+        <id>https://pvsts.github.io/post/wu-sun-yin-le-xia-zai-wang-zhan/</id>
+        <link href="https://pvsts.github.io/post/wu-sun-yin-le-xia-zai-wang-zhan/">
+        </link>
+        <updated>2023-06-16T07:04:48.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[github创建令牌Gridea同步]]></title>
+        <id>https://pvsts.github.io/post/hQ4iL4qR2/</id>
+        <link href="https://pvsts.github.io/post/hQ4iL4qR2/">
+        </link>
+        <updated>2023-06-16T06:54:22.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gridea相关]]></title>
+        <id>https://pvsts.github.io/post/g8vjBforY/</id>
+        <link href="https://pvsts.github.io/post/g8vjBforY/">
+        </link>
+        <updated>2023-06-16T06:42:24.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Windows设置开机后台运行cmd]]></title>
+        <id>https://pvsts.github.io/post/0QuMx3yYO/</id>
+        <link href="https://pvsts.github.io/post/0QuMx3yYO/">
+        </link>
+        <updated>2023-06-16T06:21:16.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[随身备份操作]]></title>
+        <id>https://pvsts.github.io/post/m1DF6BIfC/</id>
+        <link href="https://pvsts.github.io/post/m1DF6BIfC/">
+        </link>
+        <updated>2023-06-14T15:55:56.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[修复芷荷410方案刷机之后USB共享自启失效问题]]></title>
+        <id>https://pvsts.github.io/post/izKrKOsfe/</id>
+        <link href="https://pvsts.github.io/post/izKrKOsfe/">
+        </link>
+        <updated>2023-06-14T15:34:57.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[mstsc登陆空密码]]></title>
+        <id>https://pvsts.github.io/post/UBlnpC6ki/</id>
+        <link href="https://pvsts.github.io/post/UBlnpC6ki/">
+        </link>
+        <updated>2023-06-14T14:56:13.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[修改wifi与网口的优先级]]></title>
+        <id>https://pvsts.github.io/post/ilJG2O27i/</id>
+        <link href="https://pvsts.github.io/post/ilJG2O27i/">
+        </link>
+        <updated>2023-06-14T14:47:36.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[cloudflare]]></title>
+        <id>https://pvsts.github.io/post/PfgHk5CbQ/</id>
+        <link href="https://pvsts.github.io/post/PfgHk5CbQ/">
+        </link>
+        <updated>2023-06-05T12:53:48.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[chrome扩展推荐]]></title>
+        <id>https://pvsts.github.io/post/hD-YeG2yi/</id>
+        <link href="https://pvsts.github.io/post/hD-YeG2yi/">
+        </link>
+        <updated>2023-06-04T13:18:50.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[github搭建博客自定义域名]]></title>
+        <id>https://pvsts.github.io/post/dFKDp_ikH/</id>
+        <link href="https://pvsts.github.io/post/dFKDp_ikH/">
+        </link>
+        <updated>2023-06-04T12:31:18.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[linux常用命令]]></title>
+        <id>https://pvsts.github.io/post/OK03xJv8Z/</id>
+        <link href="https://pvsts.github.io/post/OK03xJv8Z/">
+        </link>
+        <updated>2023-05-31T08:15:21.000Z</updated>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[adb常用命令]]></title>
+        <id>https://pvsts.github.io/post/ReQzzSErV/</id>
+        <link href="https://pvsts.github.io/post/ReQzzSErV/">
+        </link>
+        <updated>2023-05-31T06:52:05.000Z</updated>
+    </entry>
+</feed>

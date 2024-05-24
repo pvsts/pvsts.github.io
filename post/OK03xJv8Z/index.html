@@ -1,0 +1,387 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>linux常用命令 | CF</title>
+
+<link rel="shortcut icon" href="https://pvsts.github.io/favicon.ico?v=1716549612023">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://pvsts.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSBCH521HT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-ZSBCH521HT');
+    </script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            CF
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1716549612023" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    linux常用命令
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-05-31 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p><a href="https://blog.csdn.net/lhr2000426/article/details/129241618">csdn链接</a><br>
+<a href="https://tableconvert.com/">excel转markdown</a><br>
+<a href="https://maxiang.io/">在线编辑markdown</a></p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>shutdown 0</td>
+<td>直接关机</td>
+</tr>
+<tr>
+<td>shutdown -r 0</td>
+<td>直接重启</td>
+</tr>
+<tr>
+<td>fsck -t ext4 /dev/sda1</td>
+<td>修复系统开机进入 initramfs</td>
+</tr>
+<tr>
+<td>ip a s</td>
+<td>查看ip</td>
+</tr>
+<tr>
+<td>ctrl + alt + d</td>
+<td>进入桌面</td>
+</tr>
+<tr>
+<td>ctrl + alt + t</td>
+<td>打开终端</td>
+</tr>
+<tr>
+<td>ctrl + alt + F1</td>
+<td>进入tty1 f7进入图形化界面</td>
+</tr>
+<tr>
+<td>getconf LONG_BIT</td>
+<td>查看系统位数</td>
+</tr>
+<tr>
+<td>uname -m</td>
+<td>查看cpu架构</td>
+</tr>
+<tr>
+<td>cp frp_0.52.0_linux_amd64/frpc.ini /tmp</td>
+<td>将frpc.ini复制到tmp目录下(/tmp/*)*如果不是路径则重命名文件</td>
+</tr>
+<tr>
+<td>chmod +x frpc.ini</td>
+<td>给文件所有权限</td>
+</tr>
+<tr>
+<td>/tmp/frpc -c /tmp/frpc.ini</td>
+<td>启动frpc(如果不是系统路径)./frpc -c ./frpc.ini</td>
+</tr>
+<tr>
+<td>tar -zxvf frp_0.52.0_linux_amd64.tar.gz</td>
+<td>解压tar.gz</td>
+</tr>
+<tr>
+<td>top</td>
+<td>查看运行的程序 按m 排序</td>
+</tr>
+<tr>
+<td>ps aux</td>
+<td>grep gnome-terminal</td>
+</tr>
+<tr>
+<td>sudo apt-get install apt</td>
+<td>安装apt</td>
+</tr>
+<tr>
+<td>sudo apt update &amp;&amp; sudo apt upgrade -y &amp;&amp; sudo apt install x11vnc -y</td>
+<td></td>
+</tr>
+<tr>
+<td>ls</td>
+<td>查看目录</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>查看目录</td>
+</tr>
+<tr>
+<td>cd （文件名）</td>
+<td>进入</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>退一级目录</td>
+</tr>
+<tr>
+<td>rm -rf （文件）</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>wget （链接）</td>
+<td>下载</td>
+</tr>
+<tr>
+<td>ps aux</td>
+<td>查看开机进程</td>
+</tr>
+<tr>
+<td>touch 1.txt</td>
+<td>创建文件</td>
+</tr>
+<tr>
+<td>touch 1.txt 2.txt</td>
+<td>创建多个</td>
+</tr>
+<tr>
+<td>mkdir 1</td>
+<td>创建文件夹</td>
+</tr>
+<tr>
+<td>rmdir 1</td>
+<td>删除文件夹</td>
+</tr>
+<tr>
+<td>unzip 1.zip</td>
+<td>解压</td>
+</tr>
+<tr>
+<td>tar -zvxf 1.tar.gz</td>
+<td>解压</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>移动重命名</td>
+</tr>
+<tr>
+<td>cp 1.zip 2.zip</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>cat frps.ini</td>
+<td>查看内容</td>
+</tr>
+<tr>
+<td>uname -a</td>
+<td>查看架构</td>
+</tr>
+<tr>
+<td>whoami</td>
+<td>查看ssh登陆账号</td>
+</tr>
+<tr>
+<td>:/fun</td>
+<td>vi里面搜索</td>
+</tr>
+<tr>
+<td>sshd &amp;</td>
+<td>重启ssh连接</td>
+</tr>
+<tr>
+<td>df -h</td>
+<td>查看磁盘</td>
+</tr>
+<tr>
+<td>free -m</td>
+<td>查看空闲</td>
+</tr>
+<tr>
+<td>top</td>
+<td>运行</td>
+</tr>
+<tr>
+<td>chmod 777 * -R</td>
+<td>全部子目录及文件权限改为 777</td>
+</tr>
+<tr>
+<td>sudo -i</td>
+<td>root权限</td>
+</tr>
+<tr>
+<td>sudo pkill MPOS</td>
+<td>杀死全部进程</td>
+</tr>
+<tr>
+<td>sudo killall MPOS</td>
+<td>杀死全部进程</td>
+</tr>
+</tbody>
+</table>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://pvsts.github.io/post/ReQzzSErV/" class="post-title gt-a-link">
+                    adb常用命令
+                </a>
+            </div>
+        
+
+        
+            <span id="/post/OK03xJv8Z/" class="leancloud_visitors" data-flag-title="linux常用命令">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'F5FKsCAaAkYFD5yTSL7F6pWQ-gzGzoHsz',
+		appKey: '5ARO8BN3VNItbIyugYeuyOIq',
+		avatar: 'retro',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: '赶紧评论吧~',
+		visitor: true,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://pvsts.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>filebrowser【Windows】安装和配置 | CF</title>
+
+<link rel="shortcut icon" href="https://pvsts.github.io/favicon.ico?v=1716549612023">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://pvsts.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZSBCH521HT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'G-ZSBCH521HT');
+    </script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            CF
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+        <div style="text-align: center">
+            <form id="gridea-search-form" style="position: relative" data-update="1716549612023" action="/search/index.html">
+                <input class="search-input" autocomplete="off" spellcheck="false" name="q" placeholder="搜索文章" />
+                <i class="fas fa-search gt-c-content-color-first" style="position: absolute; top: 9px; left: 10px;"></i>
+            </form>
+        </div>
+    </div>
+</nav>
+
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    filebrowser【Windows】安装和配置
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2023-08-04 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p><a href="https://github.com/filebrowser/filebrowser/releases">github</a>上下载解压即可，得到一个exe可执行文件，主要以命令行的方式运行</p>
+<p>主要配置<br>
+1在命令行中切换到filebrowser文件夹下。<br>
+2初始化配置数据库，执行命令，生成数据库文件。</p>
+<pre><code>filebrowser config init
+</code></pre>
+<p>3设置监听地址，设置为[::]，同时监听ipv4地址和ipv6地址。</p>
+<pre><code>filebrowser config set --address [::]
+</code></pre>
+<p>4设置监听端口，默认为8080。</p>
+<pre><code>filebrowser config set --port 9527
+</code></pre>
+<p>5设置中文语言环境。</p>
+<pre><code>filebrowser config set --locale zh-cn
+</code></pre>
+<p>6设置日志，默认为stdout，在这样的设置下，日志将在运行期间在终端窗口中打印出来。可以自定义设置日志的输出位置，下面的设置是将日志输出到filebrowser.log文件中。</p>
+<pre><code>filebrowser config set --log .\filebrowser.log
+</code></pre>
+<p>7设置根路径，作为网盘上所有文件存储的位置。</p>
+<pre><code>filebrowser config set --root E:\共享文档
+</code></pre>
+<p>8添加用户，赋予权限。</p>
+<pre><code>filebrowser users add myaccount mypassword --perm.admin
+</code></pre>
+<p>该命令中，myaccount是用户名，mypassword是密码，--perm.admin是赋予该用户管理员权限，其他的权限详细看官方文档。<br>
+-------------------------到这里就可以使用了 下面看需要再操作-----------------</p>
+<p>9配置TLS加密，实现HTTPS访问。<br>
+将TLS证书复制到filebrowser文件夹下。不</p>
+<pre><code>filebrowser config set --cert .\mydomain.pem
+filebrowser config set --key .\mydomain.key
+</code></pre>
+<p>命令中的证书路径也可以是绝对路径，建议使用相对路径<br>
+10免密码访问</p>
+<pre><code>filebrowser config set --auth.method=noauth
+</code></pre>
+<p>11恢复密码访问</p>
+<pre><code>filebrowser config set --auth.method=json
+</code></pre>
+<p><a href="https://filebrowser.org/installation">官方文档</a><br>
+<a href="https://blog.csdn.net/qq_35436635/article/details/122701955">文章来源</a></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://pvsts.github.io/post/WdYT5Q-9V/" class="post-title gt-a-link">
+                    美宜佳
+                </a>
+            </div>
+        
+
+        
+            <span id="/post/6Yu7YbRIU/" class="leancloud_visitors" data-flag-title="filebrowser【Windows】安装和配置">
+                <em class="post-meta-item-text">阅读量 </em>
+                <i class="leancloud-visitors-count">0</i>
+            </span>
+        
+
+        
+
+        
+            <script src='https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js'></script>
+
+<style>
+	div#vcomments{
+		width:100%;
+		max-width: 1000px;
+		padding: 2.5%
+	}
+</style>
+
+
+	<div id="vcomments"></div>
+
+<script>
+	new Valine({
+		el: '#vcomments',
+		appId: 'F5FKsCAaAkYFD5yTSL7F6pWQ-gzGzoHsz',
+		appKey: '5ARO8BN3VNItbIyugYeuyOIq',
+		avatar: 'retro',
+		pageSize: 5,
+		recordIp: true,
+		placeholder: '赶紧评论吧~',
+		visitor: true,
+	});
+</script>
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first"></div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://pvsts.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>
