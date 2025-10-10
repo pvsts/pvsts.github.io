@@ -2060,9 +2060,9 @@
                         href: "https://github.com/ix64/unlock-music/wiki/使用提示",
                         target: "_blank"
                     }
-                }, [e._v("使用提示")])]), r("el-row", [e._v(" 目前支持 网易云音乐(ncm), QQ音乐(qmc, mflac, mgg), 酷狗音乐(kgm), 虾米音乐(xm), 酷我音乐(.kwm) "), r("a", {
+                }, [e._v("歌词下载器")])]), r("el-row", [e._v(" 目前支持 网易云音乐(ncm), QQ音乐(qmc, mflac, mgg), 酷狗音乐(kgm), 虾米音乐(xm), 酷我音乐(.kwm) "), r("a", {
                     attrs: {
-                        href: "https://github.com/ix64/unlock-music/blob/master/README.md",
+                        href: "https://smxr.com/musictag.html",
                         target: "_blank"
                     }
                 }, [e._v("更多")]), e._v("。 ")]), r("el-row", [r("span", [e._v("Copyright © 2019 - " + e._s((new Date).getFullYear()) + " MengYX")]), e._v(" 音乐解锁使用 "), r("a", {
