@@ -3,7 +3,7 @@
     <header class="room-header">
       <div class="room-card">
         <div class="room-info-group">
-          <span class="room-sub-label">正在使用房间</span>
+          <span class="room-sub-label">当前房间</span>
           <h2 class="room-id">{{ roomId }}</h2>
         </div>
       </div>
