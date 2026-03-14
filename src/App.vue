@@ -16,10 +16,10 @@
           <span class="status-text">{{ currentStatus }}</span>
           <span v-if="timeLeft" class="count-down">⏳ {{ timeLeft }}</span>
         </div>
-        <div class="divider"></div>
+        <div class="divider hide-mobile"></div>
         <button @click="handleShareClick" class="btn-action share-btn">
-          📱 扫码分享
-          <span v-if="copySuccess" class="copy-toast">链接已复制!</span>
+          <span class="icon">📱</span> <span>扫码分享</span>
+          <span v-if="copySuccess" class="copy-toast">已复制!</span>
         </button>
       </div>
 
@@ -27,7 +27,7 @@
         <template v-if="!isLocked">
           <div class="expire-zone">
             <div v-if="!showTimeOptions" class="time-display" @click="showTimeOptions = true">
-              <span class="label">自毁设置:</span>
+              <span class="label">自毁:</span>
               <span class="current-option">{{ getExpireText }} ⚙️</span>
             </div>
             
@@ -42,14 +42,10 @@
                 <button :class="{ active: expireOption === 'custom' }" @click="expireOption = 'custom'">自定义</button>
                 <button class="btn-close-mini" @click="showTimeOptions = false">✕</button>
               </div>
-              
-              <div v-if="expireOption === 'custom'" class="custom-picker-pop animate-in">
-                <input type="datetime-local" v-model="customTimeInput" @change="handleCustomTimeChange" :min="minDateTime" />
-              </div>
             </div>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider hide-mobile"></div>
 
           <div class="lock-zone-new">
             <template v-if="!dbPassword">
@@ -63,9 +59,8 @@
             </template>
           </div>
         </template>
-        
         <template v-else>
-          <span class="lock-hint-text">请先完成身份验证</span>
+          <span class="lock-hint-text">身份验证中...</span>
         </template>
       </div>
     </div>
@@ -123,6 +118,7 @@ import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { supabase } from './supabase'
 import QrcodeVue from 'qrcode.vue'
 
+// --- 状态数据 ---
 const textContent = ref('')
 const currentStatus = ref('连接中...')
 const isReady = ref(false)
@@ -154,11 +150,9 @@ let syncTimer = null
 let clockTimer = null
 let channel = null
 
-// --- 功能函数 ---
-
+// --- 逻辑函数 ---
 const handleShareClick = () => {
   showQR.value = true
-  // 核心功能：自动复制链接
   navigator.clipboard.writeText(currentUrl).then(() => {
     copySuccess.value = true
     setTimeout(() => copySuccess.value = false, 2000)
@@ -179,7 +173,7 @@ const handleCustomTimeChange = async () => {
   const expiry = new Date(customTimeInput.value).toISOString()
   await supabase.from('clipboards').update({ expires_at: expiry }).eq('id', roomId)
   startCountdown(expiry)
-  showTimeOptions.value = false // 选择完后自动收起
+  showTimeOptions.value = false
 }
 
 const updateExpireMode = async (type) => {
@@ -252,7 +246,6 @@ const init = async () => {
       const expiryDate = new Date(data.expires_at)
       if (expiryDate < new Date()) return triggerDestroy()
       startCountdown(data.expires_at)
-      // 还原选中状态逻辑
       const diffHours = (expiryDate - new Date()) / 3600000
       if (diffHours <= 1.1) expireOption.value = '1h'
       else if (diffHours <= 24.1) expireOption.value = '24h'
@@ -289,66 +282,110 @@ onUnmounted(() => { clearInterval(clockTimer); if (channel) supabase.removeChann
 </script>
 
 <style scoped>
-.container { max-width: 1000px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; padding: 20px; box-sizing: border-box; background-color: #f8fafc; font-family: -apple-system, sans-serif; }
+/* 1. 基础布局 */
+.container { max-width: 1000px; margin: 0 auto; height: 100vh; display: flex; flex-direction: column; padding: 12px; box-sizing: border-box; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 
 /* 头部 */
-.room-header { padding-bottom: 16px; }
-.room-card { background: #1e293b; color: white; padding: 10px 20px; border-radius: 14px; display: inline-block; box-shadow: 0 4px 15px rgba(30, 41, 59, 0.1); }
-.room-info-group { display: flex; flex-direction: column; }
-.room-sub-label { font-size: 10px; opacity: 0.5; font-weight: 600; }
-.room-id { margin: 0; font-size: 22px; font-weight: 800; }
+.room-header { padding-bottom: 12px; }
+.room-card { background: #1e293b; color: white; padding: 12px 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); display: inline-flex; flex-direction: column; }
+.room-sub-label { font-size: 10px; opacity: 0.6; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.room-id { margin: 0; font-size: 20px; font-weight: 900; }
 
-/* 控制面板 */
-.control-panel { background: white; padding: 8px 16px; border-radius: 14px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); position: relative; }
-.panel-left, .panel-right { display: flex; align-items: center; gap: 12px; }
+/* 2. 控制面板 */
+.control-panel { 
+  background: white; padding: 8px 16px; border-radius: 12px; margin-bottom: 12px; 
+  display: flex; justify-content: space-between; align-items: center; 
+  border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+.panel-left, .panel-right { display: flex; align-items: center; gap: 15px; }
 .divider { width: 1px; height: 20px; background: #e2e8f0; }
 
-/* 复制分享按钮 */
-.share-btn { position: relative; }
-.copy-toast { position: absolute; top: -35px; left: 50%; transform: translateX(-50%); background: #1e293b; color: white; padding: 4px 8px; border-radius: 6px; font-size: 11px; white-space: nowrap; animation: fadeInOut 2s forwards; }
-@keyframes fadeInOut { 0% { opacity: 0; } 20% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+/* 扫码分享按钮增强 */
+.btn-action { 
+  background: #f8fafc; border: 1px solid #cbd5e1; padding: 6px 14px; 
+  border-radius: 8px; font-size: 13px; font-weight: 700; cursor: pointer; color: #334155; 
+  display: flex; align-items: center; gap: 6px; transition: all 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  white-space: nowrap;
+}
+.btn-action:hover { background: white; border-color: #3b82f6; color: #3b82f6; transform: translateY(-1px); box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
-/* 自定义时间弹出层 */
-.seg-control-wrapper { display: flex; align-items: center; gap: 8px; }
-.custom-picker-pop { position: absolute; top: 110%; right: 120px; background: white; padding: 10px; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 10px 30px rgba(0,0,0,0.1); z-index: 50; }
-.custom-picker-pop input { border: 1px solid #ddd; padding: 5px; border-radius: 5px; font-size: 13px; }
-
-.btn-action { background: none; border: 1px solid #e2e8f0; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; color: #475569; }
-.time-display { cursor: pointer; display: flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 8px; }
+/* 自毁区域对齐修复 */
+.expire-zone { display: flex; align-items: center; }
+.time-display { 
+  display: flex; align-items: center; gap: 5px; cursor: pointer; padding: 6px 8px; 
+  border-radius: 6px; white-space: nowrap; transition: background 0.2s;
+}
 .time-display:hover { background: #f1f5f9; }
-.current-option { font-size: 13px; font-weight: 700; color: #3b82f6; }
+.label { font-size: 13px; color: #64748b; font-weight: 600; }
+.current-option { font-size: 13px; font-weight: 800; color: #2563eb; }
 
-.seg-control { display: flex; background: #f1f5f9; padding: 3px; border-radius: 8px; gap: 2px; }
-.seg-control button { border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; background: transparent; }
-.seg-control button.active { background: white; color: #2563eb; font-weight: 700; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+/* 密码区域修复 */
+.lock-zone-new { display: flex; align-items: center; }
+.pw-group { display: flex; align-items: center; gap: 6px; }
+.pw-input-mini { 
+  border: 1px solid #e2e8f0; padding: 6px 10px; border-radius: 6px; outline: none; 
+  font-size: 13px; width: 100px; transition: border-color 0.2s;
+}
+.pw-input-mini:focus { border-color: #3b82f6; }
+.btn-lock-mini { 
+  background: #3b82f6; color: white; border: none; padding: 6px 12px; 
+  border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap;
+}
 
-/* 其他 UI */
-.sync-status { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #64748b; }
-.indicator { width: 7px; height: 7px; border-radius: 50%; }
-.online { background: #10b981; }
-.count-down { color: #ef4444; background: #fee2e2; padding: 2px 8px; border-radius: 5px; font-size: 11px; }
-.lock-hint-text { font-size: 12px; color: #94a3b8; font-style: italic; }
+/* 3. 手机端适配：重点重构 */
+@media (max-width: 768px) {
+  .control-panel { 
+    flex-direction: column; align-items: stretch; gap: 12px; padding: 12px;
+  }
+  .panel-left, .panel-right { 
+    justify-content: space-between; width: 100%; 
+  }
+  .hide-mobile { display: none; }
+  
+  /* 确保手机端文字不换行 */
+  .status-text, .current-option, .btn-action, .label { white-space: nowrap !important; }
 
-.pw-input-mini { border: 1px solid #e2e8f0; padding: 5px 8px; width: 80px; font-size: 12px; border-radius: 6px; outline: none; }
-.btn-lock-mini { background: #3b82f6; color: white; border: none; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; }
-.btn-unlock-pill { background: #fee2e2; color: #ef4444; border: 1px solid #fecaca; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; cursor: pointer; }
+  /* 解决密码框过长 */
+  .pw-group { flex: 1; justify-content: flex-end; }
+  .pw-input-mini { width: 40% !important; max-width: 120px; }
+}
 
-.editor-frame { flex: 1; position: relative; background: white; border-radius: 18px; overflow: hidden; border: 1px solid #e2e8f0; }
-textarea { width: 100%; height: 100%; padding: 25px; border: none; outline: none; font-size: 18px; line-height: 1.8; resize: none; }
+/* 4. 辅助 UI */
+.sync-status { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: #475569; }
+.indicator { width: 8px; height: 8px; border-radius: 50%; }
+.online { background: #10b981; box-shadow: 0 0 8px rgba(16,185,129,0.4); }
+.syncing { background: #f59e0b; animation: blink 1s infinite; }
+@keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
 
-.state-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(8px); background: rgba(248, 250, 252, 0.9); }
-.auth-card { width: 100%; max-width: 380px; padding: 40px; text-align: center; }
-.auth-form { width: 100%; display: flex; flex-direction: column; gap: 16px; }
-.auth-form input { width: 100%; box-sizing: border-box; padding: 16px; border: 2px solid #e2e8f0; border-radius: 12px; text-align: center; }
-.btn-main { width: 100%; box-sizing: border-box; background: #1e293b; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 700; cursor: pointer; }
+.count-down { color: #e11d48; background: #fff1f2; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 800; }
 
-.footer-tips { padding: 20px 0; text-align: center; font-size: 13px; color: #94a3b8; font-weight: 500; }
-.footer-tips code { background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+.seg-control { display: flex; background: #f1f5f9; padding: 2px; border-radius: 8px; gap: 2px; overflow-x: auto; }
+.seg-control button { border: none; padding: 6px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; background: transparent; white-space: nowrap; font-weight: 600; color: #64748b; }
+.seg-control button.active { background: white; color: #2563eb; font-weight: 800; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
 
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 2000; }
-.modal-card { background: white; padding: 30px; border-radius: 20px; text-align: center; width: 300px; }
-.qr-hint { font-size: 12px; color: #10b981; font-weight: 600; margin-top: 10px; }
-.btn-close { width: 100%; margin-top: 15px; padding: 10px; border-radius: 8px; border: none; background: #f1f5f9; cursor: pointer; }
-.animate-in { animation: slideIn 0.2s ease-out; }
-@keyframes slideIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+.btn-unlock-pill { background: #fff1f2; color: #e11d48; border: 1px solid #fecaca; padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 800; cursor: pointer; }
+
+/* 5. 编辑器 */
+.editor-frame { flex: 1; position: relative; background: white; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.01); }
+textarea { 
+  width: 100%; height: 100%; padding: 20px; border: none; outline: none; 
+  font-size: 16px; line-height: 1.7; resize: none; box-sizing: border-box; 
+  color: #1e293b; background: transparent;
+}
+
+/* 6. 弹窗与遮罩 */
+.modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+.modal-card { background: white; padding: 30px; border-radius: 20px; text-align: center; width: 100%; max-width: 320px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+.qr-code { margin: 20px auto; border: 1px solid #f1f5f9; padding: 10px; border-radius: 12px; }
+
+.state-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 100; backdrop-filter: blur(8px); background: rgba(255,255,255,0.8); }
+.state-card { background: white; padding: 40px; border-radius: 24px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.08); width: 85%; max-width: 360px; }
+
+.btn-main { width: 100%; background: #1e293b; color: white; border: none; padding: 16px; border-radius: 12px; font-weight: 800; cursor: pointer; transition: background 0.2s; }
+.btn-main:hover { background: #0f172a; }
+
+.footer-tips { padding: 12px 0; text-align: center; font-size: 12px; color: #94a3b8; font-weight: 500; }
+.animate-in { animation: fadeInUp 0.3s ease-out; }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 </style>
