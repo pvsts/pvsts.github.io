@@ -126,17 +126,6 @@
       </div>
     </aside>
 
-    <!-- Toast 通知 -->
-    <div class="toast-container">
-      <transition-group name="toast">
-        <div v-for="toast in toasts" :key="toast.id" class="toast" :class="toast.type">
-          <span class="toast-icon">{{ toast.icon }}</span>
-          <span class="toast-message">{{ toast.message }}</span>
-          <button @click="removeToast(toast.id)" class="toast-close">×</button>
-        </div>
-      </transition-group>
-    </div>
-
     <!-- 二维码弹窗 -->
     <div v-if="showQR" class="modal-overlay" @click="closeQRModal">
       <div class="modal-card animate-in" @click.stop>
@@ -276,10 +265,6 @@ const expireOptions = [
 // 历史记录
 const roomHistory = ref([])
 
-// Toast 通知
-const toasts = ref([])
-let toastId = 0
-
 // 密码强度
 const passwordStrength = ref(0)
 const strengthColor = ref('#dc3545')
@@ -327,22 +312,6 @@ watch(isDarkMode, (newValue) => {
 })
 
 // --- 工具函数 ---
-const showToast = (message, type = 'info') => {
-  const icons = {
-    success: '✅',
-    error: '❌',
-    warning: '⚠️',
-    info: 'ℹ️'
-  }
-  const id = ++toastId
-  toasts.value.push({ id, message, type, icon: icons[type] })
-  setTimeout(() => removeToast(id), 3000)
-}
-
-const removeToast = (id) => {
-  toasts.value = toasts.value.filter(t => t.id !== id)
-}
-
 const loadTheme = () => {
   const savedTheme = localStorage.getItem('darkMode')
   if (savedTheme !== null) {
@@ -388,7 +357,6 @@ const formatHistoryTime = (timestamp) => {
 
 const toggleDarkMode = () => {
   isDarkMode.value = !isDarkMode.value
-  showToast(isDarkMode.value ? '已切换到暗黑模式' : '已切换到亮色模式', 'info')
 }
 
 const toggleSettings = () => {
@@ -442,7 +410,6 @@ const handleShareClick = () => {
   showQR.value = true
   copySuccess.value = false
   navigator.clipboard.writeText(currentUrl).then(() => {
-    showToast('链接已复制到剪贴板', 'success')
     copySuccess.value = true
   })
 }
@@ -454,7 +421,6 @@ const closeQRModal = () => {
 
 const copyLink = () => {
   navigator.clipboard.writeText(currentUrl).then(() => {
-    showToast('链接已复制到剪贴板', 'success')
     copySuccess.value = true
   })
 }
@@ -472,7 +438,6 @@ const handleCustomTimeChange = async () => {
   const expiry = new Date(customTimeInput.value).toISOString()
   startCountdown(expiry)
   await supabase.from('clipboards').update({ expires_at: expiry }).eq('id', roomId)
-  showToast('自定义销毁时间已设置', 'success')
 }
 
 const updateExpireMode = async (type) => {
@@ -497,7 +462,6 @@ const updateExpireMode = async (type) => {
 
   await supabase.from('clipboards').update({ expires_at: expiresAt }).eq('id', roomId)
   if (expiresAt) startCountdown(expiresAt)
-  showToast('销毁时间已更新', 'success')
 }
 
 const startCountdown = (expiry) => {
@@ -526,7 +490,6 @@ const startCountdown = (expiry) => {
 const triggerDestroy = async () => {
   isExpired.value = true
   await supabase.from('clipboards').update({ content: '', expires_at: null, password: null }).eq('id', roomId)
-  showToast('内容已自动销毁', 'warning')
 }
 
 const getDebounceTime = () => {
@@ -543,13 +506,11 @@ const handleManualSave = async () => {
   try {
     await supabase.from('clipboards').upsert({ id: roomId, content: textContent.value })
     currentStatus.value = '已保存'
-    showToast('内容已保存', 'success')
     setTimeout(() => {
       if (isReady.value) currentStatus.value = '就绪'
     }, 2000)
   } catch (error) {
     currentStatus.value = '保存失败'
-    showToast('保存失败，请重试', 'error')
   }
 }
 
@@ -576,7 +537,6 @@ const saveToDatabase = async () => {
       setTimeout(saveToDatabase, 2000 * retryCount)
     } else {
       currentStatus.value = '同步失败'
-      showToast('同步失败，请检查网络连接', 'error')
     }
   }
 }
@@ -585,10 +545,8 @@ const verifyPassword = () => {
   if (inputPassword.value === dbPassword.value) {
     sessionStorage.setItem(`unlock_${roomId}`, 'true')
     isLocked.value = false
-    showToast('密码验证成功', 'success')
     init()
   } else {
-    showToast('密码错误，请重试', 'error')
     inputPassword.value = ''
   }
 }
@@ -600,7 +558,6 @@ const lockRoom = async () => {
   sessionStorage.setItem(`unlock_${roomId}`, 'true')
   newPassword.value = ''
   passwordStrength.value = 0
-  showToast('密码已设置', 'success')
 }
 
 const confirmUnlockRoom = () => {
@@ -613,7 +570,6 @@ const unlockRoomPermanently = async () => {
   await supabase.from('clipboards').update({ password: null }).eq('id', roomId)
   dbPassword.value = null
   sessionStorage.removeItem(`unlock_${roomId}`)
-  showToast('密码已移除', 'success')
 }
 
 const confirmResetRoom = () => {
@@ -631,7 +587,6 @@ const resetRoom = async () => {
   dbPassword.value = null
   sessionStorage.removeItem(`unlock_${roomId}`)
   await init()
-  showToast('房间已重新创建', 'success')
 }
 
 const switchRoom = (roomName) => {
@@ -692,7 +647,6 @@ const init = async () => {
     saveToHistory()
   } catch (error) {
     console.error('初始化失败:', error)
-    showToast('连接失败，请检查网络', 'error')
     currentStatus.value = '连接失败'
   } finally {
     isLoading.value = false
@@ -707,7 +661,6 @@ onMounted(() => {
       if (!isLocked.value && payload.new.content !== textContent.value) {
         textContent.value = payload.new.content
         if (payload.new.expires_at) startCountdown(payload.new.expires_at)
-        showToast('内容已同步', 'info')
       }
     }).subscribe()
 })
@@ -1238,102 +1191,6 @@ onMounted(() => {
 
 .history-delete:hover {
   transform: scale(1.2);
-}
-
-/* Toast 通知 */
-.toast-container {
-  position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 5000;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  pointer-events: none;
-}
-
-.toast-container > * {
-  pointer-events: auto;
-}
-
-.toast {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  min-width: 280px;
-  animation: toastSlideIn 0.3s ease-out;
-  border-left: 4px solid #228be6;
-}
-
-.toast.success {
-  border-left-color: #40c057;
-}
-
-.toast.error {
-  border-left-color: #fa5252;
-}
-
-.toast.warning {
-  border-left-color: #fab005;
-}
-
-.dark-mode .toast {
-  background: #16213e;
-  color: #e0e0e0;
-}
-
-.toast-icon {
-  font-size: 18px;
-}
-
-.toast-message {
-  flex: 1;
-  font-size: 14px;
-}
-
-.toast-close {
-  background: none;
-  border: none;
-  color: #6c757d;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 4px;
-  line-height: 1;
-}
-
-.toast-close:hover {
-  color: #212529;
-}
-
-.dark-mode .toast-close:hover {
-  color: #e0e0e0;
-}
-
-.toast-enter-active,
-.toast-leave-active {
-  transition: all 0.3s;
-}
-
-.toast-enter-from,
-.toast-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-@keyframes toastSlideIn {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 /* 加载状态 */
@@ -1904,16 +1761,6 @@ onMounted(() => {
 
   .lock-card {
     padding: 24px;
-  }
-
-  .toast-container {
-    left: 10px;
-    right: 10px;
-    transform: none;
-  }
-
-  .toast {
-    min-width: auto;
   }
 
   .empty-tips {
